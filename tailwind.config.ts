@@ -9,9 +9,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        bill: {
+          orange: "#DA5221",
+          green: "#98C643",
+          lime: "#EEF188",
+        },
       },
+      fontFamily: {
+         mono: "var(--font-cutive-mono) ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+      }
     },
   },
   plugins: [],
