@@ -16,7 +16,8 @@ export default {
         },
       },
       fontFamily: {
-         mono: "var(--font-cutive-mono) ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+         mono: 'cutiveMono ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+         serif: 'cantanaOne ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;'
       }
     },
   },

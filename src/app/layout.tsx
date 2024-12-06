@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { auth } from "@/lib/firebase";
-import { onAuthStateChanged } from "firebase/auth";
 import { ClerkProvider } from "@clerk/nextjs";
 
 const cutiveMono = localFont({
@@ -10,6 +8,12 @@ const cutiveMono = localFont({
   variable: "--font-cutive-mono",
   weight: "100 400 700 900",
 });
+
+const cantanaOne = localFont({
+  src: "./fonts/CantataOne-Regular.ttf",
+  variable: "--font-cantata-one",
+  weight: "100 400 700 900",
+})
 
 export const metadata: Metadata = {
   title: "Bill's Coffee Julekalender",
@@ -39,7 +43,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${cutiveMono.variable} font-mono min-h-screen bg-background antialiased`}>
+        <body className={`${cutiveMono.variable} ${cantanaOne.variable} font-mono min-h-screen bg-background antialiased mx-auto max-w-sm`}>
           {children}
         </body>
       </html>
