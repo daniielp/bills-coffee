@@ -1,14 +1,14 @@
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/mascot";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { getGuide } from "@/lib/api";
-interface GuidePageProps {
+import { getQuiz } from "@/lib/api";
+
+interface QuizPageProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function GuidePage({ params }: GuidePageProps) {
+export default async function QuizPage({ params }: QuizPageProps) {
   const { id } = await params;
-
-  const data = await getGuide(id);
+  const data = await getQuiz(id);
 
   if (!data) {
     return (
@@ -21,8 +21,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
       </Alert>
     );
   }
-
-  console.log(data);
 
   return <div>
     <pre>{JSON.stringify(data)}</pre>

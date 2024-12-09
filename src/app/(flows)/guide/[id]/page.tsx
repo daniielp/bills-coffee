@@ -1,19 +1,19 @@
-import { Logo } from "@/components/logo";
+import { Mascot } from "@/components/mascot";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { getQuiz } from "@/lib/api";
-
-interface QuizPageProps {
+import { getGuide } from "@/lib/api";
+interface GuidePageProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function QuizPage({ params }: QuizPageProps) {
+export default async function GuidePage({ params }: GuidePageProps) {
   const { id } = await params;
-  const data = await getQuiz(id);
+
+  const data = await getGuide(id);
 
   if (!data) {
     return (
       <Alert variant="destructive">
-        <Logo className="h-8 w-8" />
+        <Mascot className="h-8 w-8" />
         <AlertTitle>Der opstod en fejl</AlertTitle>
         <AlertDescription>
           Bill kunne ikke hente de nødvendige oplysninger
@@ -21,6 +21,8 @@ export default async function QuizPage({ params }: QuizPageProps) {
       </Alert>
     );
   }
+
+  console.log(data);
 
   return <div>
     <pre>{JSON.stringify(data)}</pre>
