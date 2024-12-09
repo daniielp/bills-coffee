@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${cutiveMono.variable} ${cantanaOne.variable} font-mono min-h-screen bg-background antialiased mx-auto max-w-md`}>
+        <body className={`${cutiveMono.variable} ${cantanaOne.variable} font-mono min-h-screen bg-background antialiased mx-auto max-w-md bg-[#FEFFE8]`}>
           {children}
           <Navbar />
         </body>
