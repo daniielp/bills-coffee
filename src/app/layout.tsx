@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Navbar from "@/components/Navbar";
 
 const cutiveMono = localFont({
   src: "./fonts/CutiveMono-Regular.ttf",
@@ -45,6 +46,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body className={`${cutiveMono.variable} ${cantanaOne.variable} font-mono min-h-screen bg-background antialiased mx-auto max-w-md`}>
           {children}
+          <Navbar />
         </body>
       </html>
     </ClerkProvider>
