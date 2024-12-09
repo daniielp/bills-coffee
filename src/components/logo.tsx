@@ -15,18 +15,19 @@ const logoVariants = cva("h-40 w-28 text-dark dark:text-white", {
 });
 
 export interface LogoProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.SVGAttributes<HTMLOrSVGElement>,
     VariantProps<typeof logoVariants> {}
 
-export function Logo({ variant }: LogoProps) {
+export function Logo({ variant, className, ...props }: LogoProps) {
   return (
     <svg
-      className={cn(logoVariants({ variant }))}
+      className={cn(logoVariants({ variant }), className)}
       width="76"
       height="112"
       viewBox="0 0 76 112"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         d="M36.5434 48.2592C36.7289 47.8035 36.9204 47.3393 37.1178 46.8662C37.6493 45.5926 38.1364 44.4073 38.5781 43.2965C38.5781 43.2965 34.9366 39.6293 32.2237 40.1622C30.5661 40.4878 29.3652 41.8869 28.5857 42.5129C27.8061 43.1389 26.4907 45.1478 24.6011 45.299C23.3825 45.3965 22.2722 45.5208 21.5694 44.5154C20.9471 43.6252 21.5694 41.7293 21.5694 41.7293C21.5694 41.7293 19.1112 43.0052 18.7109 44.5154C18.1524 46.6228 20.8764 48.8687 21.5694 49.304C22.2623 49.7393 25.2206 51.4231 27.8061 51.5677C31.4467 51.7712 36.5434 48.2592 36.5434 48.2592Z"
