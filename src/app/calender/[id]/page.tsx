@@ -1,3 +1,4 @@
+import { Gate } from "@/components/gate";
 import { Logo } from "@/components/logo";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { getCalenderDoor } from "@/lib/api";
@@ -26,7 +27,10 @@ export default async function ChristmasDoorPage({
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-16 items-center py-16">
+      <Gate>
+        Hejsa
+      </Gate>
       <pre>{JSON.stringify(data)}</pre>
     </div>
   );
