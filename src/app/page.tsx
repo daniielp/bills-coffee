@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="pt-6 py-4">
+    <div className="pt-6 py-4 w-full">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div>
           <svg className="z-[-1] w-full absolute inset-0" width="440" height="460" viewBox="0 0 440 460" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +51,7 @@ export default function Home() {
             <path d="M123.205 82.4632C114.984 72.1256 110.512 59.1429 112.204 52.9414C113.896 46.7399 118.218 44.5043 123.932 44.1476C129.259 43.8149 137.181 49.5129 136.174 50.4324L133.56 56.2365C133.394 55.6871 129.982 49.7976 126.062 49.5264C120.453 49.1384 118.445 53.7154 117.796 58.332C116.712 66.0425 124.537 77.096 124.537 77.096L123.205 82.4632Z" fill="#FF7A4A" />
             <path d="M158.77 86.1779C158.96 76.7072 149.647 73.8682 145.001 80.326C140.354 86.7838 146.471 104.588 146.471 104.588C146.471 104.588 164.927 103.926 169.318 97.8223C173.71 91.7189 168.936 83.8852 160.017 87.0752L159.03 87.1322L158.77 86.1779Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <div className="w-40">
+          <div>
             <p> Kom ned og få
               en kop med
               kærlighed.
