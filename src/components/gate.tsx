@@ -20,16 +20,16 @@ export function Gate({ children, id, type }: PropsWithChildren<GateProps>) {
 
     switch (type) {
       case "quiz":
-        path = "/coffee-bean-filled.svg";
+        path = "/coffee-bean.svg";
         break;
       case "guide":
-        path = "/coffee-bean-filled.svg";
+        path = "/coffee-bean.svg";
         break;
       case "coupon":
         path = "/coupon.svg";
         break;
       default:
-        path = "/coffee-bean-filled.svg";
+        path = "/coffee-bean.svg";
         break;
     }
 
