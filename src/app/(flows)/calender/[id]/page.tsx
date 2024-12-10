@@ -28,7 +28,7 @@ export default async function ChristmasDoorPage({
   console.log(data.key)
 
   return (
-    <div className="flex flex-col gap-16 items-center py-16">
+    <div className="flex flex-col gap-16 items-center px-4 py-16">
       <Gate id={data.key} type={data.type} />
     </div>
   );
