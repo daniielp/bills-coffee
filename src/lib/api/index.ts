@@ -23,7 +23,7 @@ export async function getQuiz(id: string) {
 export async function getCalenderDoor(id: string) {
     try {
         const response = await fetch(`${API_URL}/christmas-calender/${id}.json`);
-        const data = await response.json();
+        const data = await response.json() as { key: string, type: string };
         return data;
     } catch (error) {
         return null;

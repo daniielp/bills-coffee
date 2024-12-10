@@ -2,7 +2,6 @@ import { Gate } from "@/components/gate";
 import { Mascot } from "@/components/mascot";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { getCalenderDoor } from "@/lib/api";
-import { AlertCircle } from "lucide-react";
 
 interface ChristmasDoorPageProps {
   params: Promise<{ id: string }>;
@@ -26,12 +25,11 @@ export default async function ChristmasDoorPage({
     );
   }
 
+  console.log(data.key)
+
   return (
     <div className="flex flex-col gap-16 items-center py-16">
-      <Gate>
-        Hejsa
-      </Gate>
-      <pre>{JSON.stringify(data)}</pre>
+      <Gate id={data.key} type={data.type} />
     </div>
   );
 }

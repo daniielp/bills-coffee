@@ -19,3 +19,11 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+.rotate-y-120 {
+  transform: rotateY(-120deg);
+}
