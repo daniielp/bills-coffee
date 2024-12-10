@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "relative overflow-hidden font-mono rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "relative overflow-hidden font-mono rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border-2 border-transparent",
   {
     variants: {
       variant: {
@@ -15,7 +15,7 @@ const buttonVariants = cva(
           "bg-red-500",
         success:
           "bg-green-500",
-        outline: "bg-transparent outline outline-bills-orange"
+        outline: "bg-transparent text-black  border-bill-orange"
       },
       size: {
         default: "h-9 px-4 py-2",

@@ -2,11 +2,11 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-const mascotVariants = cva("h-40 w-28 text-dark dark:text-white", {
+const mascotVariants = cva("h-40 w-28 text-dark", {
   variants: {
     variant: {
-      light: "text-white dark:text-black",
-      dark: "text-black dark:text-white",
+      light: "text-white",
+      dark: "text-black",
     },
   },
   defaultVariants: {
