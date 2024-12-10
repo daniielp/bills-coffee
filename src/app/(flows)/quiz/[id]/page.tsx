@@ -1,4 +1,5 @@
 import { Mascot } from "@/components/mascot";
+import { QuizFlow } from "@/components/quiz/quiz-flow";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { getQuiz } from "@/lib/api";
 
@@ -22,7 +23,5 @@ export default async function QuizPage({ params }: QuizPageProps) {
     );
   }
 
-  return <div>
-    <pre>{JSON.stringify(data)}</pre>
-  </div>;
+  return <QuizFlow data={data} />;
 }
