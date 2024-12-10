@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -86,7 +87,8 @@ export default function Home() {
             <p className="font-serif font-bold text-2xl"> Kom ned og få en kop med kærlighed.</p>
           </div>
         </div>
-      <Button></Button>
+        <Button asChild size="large" className="w-full mt-16"><Link href="/guide"><img className="absolute"  src="/coffee-bean-filled.svg" alt="guides" />Guides</Link></Button>
+        <Button asChild size="large" className="w-full"><Link href="/recipe"><img className="absolute"  src="/button-cup.svg" alt="recipe" />Opskrifter</Link></Button>
       </main>
   );
 }
