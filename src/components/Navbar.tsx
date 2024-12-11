@@ -11,7 +11,7 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/calender">
+                    <Link href="/calendar">
                         <svg className='pb-4 mb-4 animate-bounce' width="120" height="106" viewBox="0 0 120 106" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.9115 57.0895L50.1429 37.2963V84.571L13.9115 105.836V57.0895Z" fill="#DA5221" />
                             <path d="M50.1429 37.2963H116.236L99.9115 75.7377L50.1429 86.0432V37.2963Z" fill="#A43B15" />

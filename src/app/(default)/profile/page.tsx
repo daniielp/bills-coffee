@@ -1,8 +1,12 @@
-import { Button } from "@/components/ui/button";
+"use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useUser } from "@clerk/nextjs";
 import { ChevronRightIcon, TicketIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function profile() {
+    const { user} = useUser();
+
     return (
         <main className="flex flex-col items-center gap-16 p-4 pt-6 py-4 w-full">
             <div className="flex flex-row space-between items-center">
