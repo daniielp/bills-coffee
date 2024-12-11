@@ -5,7 +5,7 @@ import { ChevronRightIcon, TicketIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function profile() {
-    const { user} = useUser();
+    const { user } = useUser();
 
     return (
         <main className="flex flex-col items-center gap-16 p-4 pt-6 py-4 w-full">
@@ -20,13 +20,13 @@ export default function profile() {
 
             <div className="h-0.5 w-full bg-bill-green"></div>
 
-        
             <Link href="/profile/kupon" className="flex flex-row justify-between items-center w-full">
                 <TicketIcon />
                 <p className="font-mono">Dine kuponer</p>
                 <ChevronRightIcon strokeWidth={1.5} size={60} className="text-bill-orange" />
-              
+
             </Link>
+
 
 
 

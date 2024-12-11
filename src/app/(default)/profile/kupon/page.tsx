@@ -6,6 +6,7 @@ import { getCoupons } from "@/lib/api";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Mascot } from "@/components/mascot";
 import { useMemo } from "react";
+import Coupon from "@/components/kupon";
 
 
 export default async function kupon() {
@@ -30,17 +31,17 @@ export default async function kupon() {
 
     return (
         <main className="flex flex-col items-center gap-16 pt-6 py-4 w-full">
-            <div>
-                <p>Mine Kuponer</p>
-
+            <div className="w-full pl-4">
+                <p className="font-serif font-bold text-2xl text-left">Mine Kuponer</p>
+                <Coupon title={""} id={""} />
             </div>
-            <div className="bg-[#E0E476] p-4 w-full h-1/2 rounded-2xl fixed bottom-10 left-0">
-                <p className="font-mono">Point Kiosken</p>
-                <div className='flex justify-between rounded-2xl bg-[#FFFCD4] w-44'>
+            <div className="bg-[#E0E476] p-4 w-full h-3/5 rounded-2xl font-serif fixed bottom-2 left-0">
+                <p className="text-2xl font-bold pb-4">Point Kiosken</p>
+                <div className='flex font-semibold justify-between rounded-2xl bg-[#FFFCD4] w-44'>
                     <p className=' px-2 rounded-2xl'>Antal point</p>
                     <p className="bg-white rounded-2xl px-2">150</p>
                 </div>
-                <div className="grid grid-cols-3 gap-6 p-4">
+                <div className="grid grid-cols-3 justi-center gap-2 pt-4">
                     {coupons.map((coupon) =>
                         <Storecard id={coupon.id} title={coupon.text} cost={coupon.cost} />
                     )}
@@ -50,5 +51,3 @@ export default async function kupon() {
         </main>
     );
 }
-
-
