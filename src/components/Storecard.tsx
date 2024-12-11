@@ -35,10 +35,10 @@ const Storecard = ({ title, id, cost }: StorecardProps) => {
     }
 
     return (
-        <div className='bg-[#FF7A4A] rounded-xl flex flex-col items-center'>
+        <div className='bg-[#FF7A4A] max-h-52 rounded-xl p-2 flex flex-col items-center justify-between'>
             <h2 className='text-white'>{title}</h2>
-            <img className='w-30' src={imageURL} alt={title} />
-            <div className='flex flex-row items-center pr-2 gap-2 border-bill-lime border-2 rounded-2xl'>
+            <img className='w-30 h-12' src={imageURL} alt={title} />
+            <div className='flex items-baseline pr-2 gap-2 border-bill-lime border-2 rounded-2xl'>
                 <p className='bg-bill-lime px-2 rounded-2xl'>Køb</p>
                 <p>{cost}</p>
             </div>
