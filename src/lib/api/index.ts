@@ -29,3 +29,13 @@ export async function getCalenderDoor(id: string) {
         return null;
     }
 }
+
+export async function getCoupons() {
+    try {
+        const response = await fetch(`${API_URL}/coupons.json`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        return null;
+    }
+}
