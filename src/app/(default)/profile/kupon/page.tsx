@@ -33,7 +33,7 @@ export default async function kupon() {
         <main className="flex flex-col items-center gap-16 pt-6 py-4 w-full">
             <div className="w-full pl-4">
                 <p className="font-serif font-bold text-2xl text-left">Mine Kuponer</p>
-                <Coupon title={""} id={""} />
+                <Coupon title={""} id={""} cost={""} />
             </div>
             <div className="bg-[#E0E476] p-4 w-full h-3/5 rounded-2xl font-serif fixed bottom-2 left-0">
                 <p className="text-2xl font-bold pb-4">Point Kiosken</p>

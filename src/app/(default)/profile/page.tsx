@@ -10,9 +10,12 @@ export default function profile() {
     return (
         <main className="flex flex-col items-center gap-16 p-4 pt-6 py-4 w-full">
             <div className="flex flex-row space-between items-center">
-                <div className="w-20 h-16 bg-gray-200 rounded-full"></div>
-                <div className="">
-                    <p className="font-mono text-2xl pl-4"></p>
+                <Avatar className="w-20 h-20">
+                    <AvatarImage src={user?.imageUrl} />
+                    <AvatarFallback>BC</AvatarFallback>
+                </Avatar>
+                <div>
+                    <p className="font-mono text-2xl pl-4">{user?.fullName ?? "Henter oplysninger..." }</p>
                     <p className="text-xs pl-4">Ret adgangskode, sikkerhed, personlige oplysninger</p>
                 </div>
                 <ChevronRightIcon strokeWidth={1.5} size={60} className="text-bill-orange" />
