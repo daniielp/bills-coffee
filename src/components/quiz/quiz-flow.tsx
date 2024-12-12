@@ -105,7 +105,6 @@ export function QuizFlow({ data }: QuizFlowProps) {
           Spørgsmål {currentStep + 2} <ArrowRight />
         </Link>
       </Button>
-      <pre>{JSON.stringify(steps)}</pre>
     </main>
   );
 }
