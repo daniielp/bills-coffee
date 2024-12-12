@@ -2,7 +2,9 @@
 
 import { Mascot } from "@/components/mascot";
 import { Button } from "@/components/ui/button";
+import { updatePoints } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import { useUser } from "@clerk/nextjs";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -16,6 +18,7 @@ export function QuizFlow({ data }: QuizFlowProps) {
   const search = useSearchParams();
   const currentStep = parseInt(search.get("step") ?? "0");
   const [hasAnswered, setHasAnswered] = useState<boolean>(false);
+  const { user } = useUser();
 
   useEffect(() => {
     setHasAnswered(false);
@@ -38,8 +41,14 @@ export function QuizFlow({ data }: QuizFlowProps) {
       ...(value as any),
     }));
   }, [currentStep]);
+  const isFinalStep = currentStep >= steps.length;
+  
 
-  if (currentStep >= steps.length) {
+  if (isFinalStep) {
+    if (user) {
+      updatePoints(user.id, parseInt(data.points));
+    };
+
     return (
       <main className="flex flex-col justify-between items-center gap-8">
         <div>
@@ -61,7 +70,11 @@ export function QuizFlow({ data }: QuizFlowProps) {
         {steps.map((_, index) => (
           <div className="flex justify-center items-center border-2 border-bill-orange h-20 w-20 rounded-full">
             {index < currentStep && (
-              <Mascot variant="dark" className="h-16 w-16 text-bill-orange" />
+              <Mascot
+                key={"mascot" + index}
+                variant="dark"
+                className="h-16 w-16 text-bill-orange"
+              />
             )}
           </div>
         ))}
