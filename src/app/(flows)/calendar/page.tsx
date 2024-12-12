@@ -11,9 +11,9 @@ export default function CalenderPage() {
         <Link href={"/calendar/3"}><img className="w-20 h-20 fixed top-50 right-32" src="/cup3.png" alt="kalender" /></Link>
         <Link href={"/calendar/4"}><img className="w-20 h-20 fixed top-56 right-20" src="/cup4.png" alt="kalender" /></Link>
         <div onClick={() => toast("Det er vidst ikke dagens dato du har valgt ;)")}>
-        <img src="/julekalender.png" alt="kalender" />
-      </div>
-    </div><div className="fixed bottom-4 right-4 flex flex-row w-24 h-12 bg-bill-orange rounded-full items-center p-4">
+          <img src="/julekalender.png" alt="kalender" />
+        </div>
+      </div><div className="fixed bottom-4 right-4 flex flex-row w-24 h-12 bg-bill-orange rounded-full items-center p-4">
         <img src="/share-icon.svg" alt="share" />
         <p className="text-white">Del</p>
       </div>
