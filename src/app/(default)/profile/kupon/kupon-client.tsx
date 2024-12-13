@@ -24,16 +24,20 @@ interface KuponClientProps {
     initialCoupons: Coupon[];
     initialPoints: number;
     userId: string;
+    initialUserCoupons: any;
 }
 
 export default function KuponClient({ 
     initialCoupons, 
-    initialPoints, 
+    initialPoints,
+    initialUserCoupons, 
     userId 
 }: KuponClientProps) {
-    const [purchasedCoupons, setPurchasedCoupons] = useState<Coupon[]>([]);
+    const [purchasedCoupons, setPurchasedCoupons] = useState<Coupon[]>(initialUserCoupons);
     const [currentPoints, setCurrentPoints] = useState(initialPoints);
     const [availableCoupons, setAvailableCoupons] = useState(initialCoupons);
+    
+    console.log(purchasedCoupons)
 
     const handlePurchase = async (coupon: Coupon) => {
         const cost = parseInt(coupon.cost);
@@ -44,7 +48,6 @@ export default function KuponClient({
                 
                 setCurrentPoints(updatedPoints);
                 setPurchasedCoupons([...purchasedCoupons, coupon]);
-                
                 setAvailableCoupons(availableCoupons.filter(c => c.id));
             } catch (error) {
                 console.error("Failed to purchase coupon", error);

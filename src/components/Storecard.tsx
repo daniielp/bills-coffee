@@ -1,16 +1,19 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogDescription, 
-  DialogFooter 
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+    DialogFooter
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import Coupon from '@/components/kupon';
+import { updateUserCoupons } from '@/lib/api';
+import { useUser } from '@clerk/nextjs';
+
 interface StorecardProps {
     title: string;
     id: string;
@@ -20,6 +23,7 @@ interface StorecardProps {
 
 const Storecard = ({ title, id, cost, onPurchase }: StorecardProps) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const { user } = useUser()
 
     let imageURL;
     switch (id) {
@@ -51,9 +55,9 @@ const Storecard = ({ title, id, cost, onPurchase }: StorecardProps) => {
     };
 
     const handleConfirmPurchase = () => {
-        if (onPurchase) {
-            onPurchase({ title, id, cost });
-        }
+
+        updateUserCoupons(user?.id!, id, parseInt(cost))
+
         setIsDialogOpen(false);
     };
 
@@ -63,7 +67,7 @@ const Storecard = ({ title, id, cost, onPurchase }: StorecardProps) => {
 
     return (
         <>
-            <div 
+            <div
                 className='bg-[#FF7A4A] w-32 font-serif max-h-52 rounded-xl p-2 flex flex-col items-center justify-between cursor-pointer hover:opacity-90'
                 onClick={handleBuyClick}
             >

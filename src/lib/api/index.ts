@@ -67,5 +67,35 @@ export async function updatePoints(userId: string, points: number) {
     } catch (error) {
         return 0;
     }
+}
 
+export async function getUserCoupons(userId: string) {
+    try {
+        const response = await fetch(`${API_URL}/user-coupons/${userId}.json`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        return null
+    }
+}
+
+export async function updateUserCoupons(userId: string, couponKey: string, points: number) {
+    try {
+        const currentUserCoupons = await getUserCoupons(userId);
+        
+        const couponsToUpdate = {...currentUserCoupons, [couponKey]:""}
+
+        await updatePoints(userId, -points)
+
+        const response = await fetch(`${API_URL}/user-coupons/${userId}.json`, {
+            method: "put",
+            body: JSON.stringify(couponsToUpdate)
+        })
+        const data = await response.json();
+
+        return data;
+
+    } catch (error) {
+        return null;
+    }
 }
