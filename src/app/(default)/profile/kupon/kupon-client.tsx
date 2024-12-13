@@ -4,14 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Storecard from "@/components/Storecard";
 import Coupon from "@/components/kupon";
-import { updatePoints } from "@/lib/api";
-import { toast } from "sonner";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
-  CarouselNext
 } from "@/components/ui/carousel";
 
 interface Coupon {
@@ -33,30 +29,9 @@ export default function KuponClient({
     initialUserCoupons, 
     userId 
 }: KuponClientProps) {
-    const [purchasedCoupons, setPurchasedCoupons] = useState<Coupon[]>(initialUserCoupons);
     const [currentPoints, setCurrentPoints] = useState(initialPoints);
     const [availableCoupons, setAvailableCoupons] = useState(initialCoupons);
-    
-    console.log(purchasedCoupons)
 
-    const handlePurchase = async (coupon: Coupon) => {
-        const cost = parseInt(coupon.cost);
-        
-        if (currentPoints >= cost) {
-            try {
-                const updatedPoints = await updatePoints(userId, -cost);
-                
-                setCurrentPoints(updatedPoints);
-                setPurchasedCoupons([...purchasedCoupons, coupon]);
-                setAvailableCoupons(availableCoupons.filter(c => c.id));
-            } catch (error) {
-                console.error("Failed to purchase coupon", error);
-                toast.error("Kunne ikke købe kuponen. Prøv venligst igen.");
-            }
-        } else {
-            toast.error("Ikke nok point til at købe dette kupon!");
-        }
-    };
 
     return (
         <main className="flex flex-col items-center gap-2 pt-6 py-4 w-full">
@@ -65,11 +40,11 @@ export default function KuponClient({
             </div>
             
             {/* Purchased Coupons Carousel Section */}
-            {purchasedCoupons.length > 0 && (
+            {initialUserCoupons.length > 0 && (
                 <div className="w-full px-4 mb-4 relative">
                     <Carousel>
                         <CarouselContent>
-                            {purchasedCoupons.map((coupon) => (
+                            {initialUserCoupons.map((coupon: any) => (
                                 <CarouselItem key={coupon.id} className="basis-1/3 pl-2">
                                     <Coupon 
                                         id={coupon.id}
@@ -78,10 +53,6 @@ export default function KuponClient({
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        {purchasedCoupons.length > 3 && (
-                            <>
-                            </>
-                        )}
                     </Carousel>
                 </div>
             )}
@@ -99,7 +70,6 @@ export default function KuponClient({
                             id={coupon.id} 
                             title={coupon.text} 
                             cost={coupon.cost}
-                            onPurchase={() => handlePurchase(coupon)}
                         />
                     ))}
                 </div>

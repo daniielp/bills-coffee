@@ -54,20 +54,25 @@ export async function getPoints(userId: string) {
 }
 
 export async function updatePoints(userId: string, points: number) {
-    try {
-        const existingPoints = await getPoints(userId);
 
-        const pointsToUpdate = existingPoints + points;
+    const existingPoints = await getPoints(userId);
 
-        const updatedPoints = await fetch(`${API_URL}/user-points/${userId}.json`, {
-            method: "put",
-            body: JSON.stringify(pointsToUpdate)
-        }).then(async (res) => parseInt(await res.text()) ?? 0);
 
-        return updatedPoints;
-    } catch (error) {
-        return 0;
+
+    const pointsToUpdate = existingPoints + points;
+
+    if (pointsToUpdate < 0) {
+        throw new Error("Du kan ikke sætte points til et negativt tal");
     }
+
+
+    const updatedPoints = await fetch(`${API_URL}/user-points/${userId}.json`, {
+        method: "put",
+        body: JSON.stringify(pointsToUpdate)
+    }).then(async (res) => parseInt(await res.text()) ?? 0);
+
+    return updatedPoints;
+
 }
 
 export async function getUserCoupons(userId: string) {
@@ -83,8 +88,8 @@ export async function getUserCoupons(userId: string) {
 export async function updateUserCoupons(userId: string, couponKey: string, points: number) {
     try {
         const currentUserCoupons = await getUserCoupons(userId);
-        
-        const couponsToUpdate = {...currentUserCoupons, [couponKey]:""}
+
+        const couponsToUpdate = { ...currentUserCoupons, [couponKey]: "" }
 
         await updatePoints(userId, -points)
 
@@ -97,6 +102,6 @@ export async function updateUserCoupons(userId: string, couponKey: string, point
         return data;
 
     } catch (error) {
-        return null;
+        throw new Error("Vi kunne ikke opdatere dine kuponer");
     }
 }
