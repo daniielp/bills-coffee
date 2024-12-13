@@ -1,4 +1,5 @@
-const API_URL = "https://bills-coffee-default-rtdb.europe-west1.firebasedatabase.app"
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 export async function getGuide(id: string) {
     try {
