@@ -1,15 +1,13 @@
-
 import Link from 'next/link';
 import { HomeIcon, User } from 'lucide-react';
 
-interface StorecardProps {
+interface CouponProps {
     title: string;
     id: string;
-    cost: string;
+    cost?: string;
 }
 
-const Coupon = ({ title, id}: StorecardProps) => {
-
+const Coupon = ({ title, id }: CouponProps) => {
     let imageURL;
     switch (id) {
         case 'beans':
@@ -36,12 +34,11 @@ const Coupon = ({ title, id}: StorecardProps) => {
     }
 
     return (
-        <div>
-            <img className='' src="/coupon-full.svg" alt={title} />
-            <div>
-                <p>{title}</p>
-            </div>
-        </div>
+
+<div className="relative flex flex-col text-center">
+    <img className="z-0 w-full" src="/coupon-full.svg" alt={title} />
+    <p className="absolute bottom-4 inset-x-0 z-10 text-xl text-white font-bold">{title}</p>
+</div>
     );
 };
 

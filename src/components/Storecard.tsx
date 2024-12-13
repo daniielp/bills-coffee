@@ -10,17 +10,16 @@ import {
   DialogFooter 
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import Coupon from './kupon'; // Import the Coupon component
-
+import Coupon from '@/components/kupon';
 interface StorecardProps {
     title: string;
     id: string;
     cost: string;
+    onPurchase?: (coupon: { title: string, id: string, cost: string }) => void;
 }
 
-const Storecard = ({ title, id, cost }: StorecardProps) => {
+const Storecard = ({ title, id, cost, onPurchase }: StorecardProps) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [purchasedCoupon, setPurchasedCoupon] = useState<{title: string, id: string} | null>(null);
 
     let imageURL;
     switch (id) {
@@ -52,17 +51,14 @@ const Storecard = ({ title, id, cost }: StorecardProps) => {
     };
 
     const handleConfirmPurchase = () => {
-        // Set the purchased coupon details
-        setPurchasedCoupon({ title, id });
+        if (onPurchase) {
+            onPurchase({ title, id, cost });
+        }
         setIsDialogOpen(false);
     };
 
     const handleCancelPurchase = () => {
         setIsDialogOpen(false);
-    };
-
-    const handleCouponClose = () => {
-        setPurchasedCoupon(null);
     };
 
     return (
@@ -87,7 +83,7 @@ const Storecard = ({ title, id, cost }: StorecardProps) => {
                             Vil du købe {title} for {cost}?
                         </DialogDescription>
                     </DialogHeader>
-                    <DialogFooter>
+                    <DialogFooter className='gap-4'>
                         <Button variant="outline" onClick={handleCancelPurchase}>
                             Nej
                         </Button>
@@ -97,23 +93,6 @@ const Storecard = ({ title, id, cost }: StorecardProps) => {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-
-            {purchasedCoupon && (
-                <Dialog open={!!purchasedCoupon} onOpenChange={handleCouponClose}>
-                    <DialogContent>
-                        <Coupon 
-                            title={purchasedCoupon.title} 
-                            id={purchasedCoupon.id} 
-                            cost={cost}
-                        />
-                        <DialogFooter>
-                            <Button onClick={handleCouponClose}>
-                                Luk
-                            </Button>
-                        </DialogFooter>
-                    </DialogContent>
-                </Dialog>
-            )}
         </>
     );
 };
