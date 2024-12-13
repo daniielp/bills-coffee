@@ -15,7 +15,7 @@ import { updateUserCoupons } from '@/lib/api';
 import { useUser } from '@clerk/nextjs';
 
 interface StorecardProps {
-    title: string;
+    title: string;      
     id: string;
     cost: string;
     onPurchase?: (coupon: { title: string, id: string, cost: string }) => void;
@@ -59,6 +59,8 @@ const Storecard = ({ title, id, cost, onPurchase }: StorecardProps) => {
         updateUserCoupons(user?.id!, id, parseInt(cost))
 
         setIsDialogOpen(false);
+
+        window.location.reload();
     };
 
     const handleCancelPurchase = () => {
