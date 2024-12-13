@@ -22,7 +22,7 @@ export default async function KuponPage() {
         : [];
 
         const currentUserCoupons = coupons.filter(coupon => 
-            Object.keys(userCoupons).includes(coupon.id)
+            Object.keys(userCoupons ?? {}).includes(coupon.id)
         );
 
     return <KuponClient initialUserCoupons={currentUserCoupons} initialCoupons={coupons} initialPoints={currentPoints} userId={userId} />;
