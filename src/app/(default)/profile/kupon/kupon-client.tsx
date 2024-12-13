@@ -6,6 +6,13 @@ import Storecard from "@/components/Storecard";
 import Coupon from "@/components/kupon";
 import { updatePoints } from "@/lib/api";
 import { toast } from "sonner";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext
+} from "@/components/ui/carousel";
 
 interface Coupon {
     id: string;
@@ -33,13 +40,12 @@ export default function KuponClient({
         
         if (currentPoints >= cost) {
             try {
-           
                 const updatedPoints = await updatePoints(userId, -cost);
                 
                 setCurrentPoints(updatedPoints);
                 setPurchasedCoupons([...purchasedCoupons, coupon]);
                 
-                setAvailableCoupons(availableCoupons.filter(c => c.id !== coupon.id));
+                setAvailableCoupons(availableCoupons.filter(c => c.id));
             } catch (error) {
                 console.error("Failed to purchase coupon", error);
                 toast.error("Kunne ikke købe kuponen. Prøv venligst igen.");
@@ -55,18 +61,25 @@ export default function KuponClient({
                 <p className="font-serif font-bold text-2xl text-left">Mine Kuponer</p>
             </div>
             
-            {/* Purchased Coupons Section */}
+            {/* Purchased Coupons Carousel Section */}
             {purchasedCoupons.length > 0 && (
-                <div className="w-full px-4 mb-4">
-                    <div className="grid grid-cols-3 gap-2">
-                        {purchasedCoupons.map((coupon) => (
-                            <Coupon 
-                                key={coupon.id}
-                                id={coupon.id}
-                                title={coupon.text}
-                            />
-                        ))}
-                    </div>
+                <div className="w-full px-4 mb-4 relative">
+                    <Carousel>
+                        <CarouselContent>
+                            {purchasedCoupons.map((coupon) => (
+                                <CarouselItem key={coupon.id} className="basis-1/3 pl-2">
+                                    <Coupon 
+                                        id={coupon.id}
+                                        title={coupon.text}
+                                    />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        {purchasedCoupons.length > 3 && (
+                            <>
+                            </>
+                        )}
+                    </Carousel>
                 </div>
             )}
 
@@ -91,4 +104,3 @@ export default function KuponClient({
         </main>
     );
 }
-

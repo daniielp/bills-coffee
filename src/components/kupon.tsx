@@ -34,12 +34,11 @@ const Coupon = ({ title, id }: CouponProps) => {
     }
 
     return (
-        <div className="w-full max-w-sm mx-auto">
-            <img className="w-full" src="/coupon-full.svg" alt={title} />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                <p className="text-xl font-bold">{title}</p>
-            </div>
-        </div>
+
+<div className="relative flex flex-col text-center">
+    <img className="z-0 w-full" src="/coupon-full.svg" alt={title} />
+    <p className="absolute bottom-4 inset-x-0 z-10 text-xl text-white font-bold">{title}</p>
+</div>
     );
 };
 
