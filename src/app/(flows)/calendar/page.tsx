@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import { toast } from "sonner"
+import ShareButton from "@/components/share-button";
 
 export default function CalenderPage() {
   return (
@@ -13,10 +14,8 @@ export default function CalenderPage() {
         <div onClick={() => toast("Det er vidst ikke dagens dato du har valgt ;)")}>
           <img src="/julekalender.png" alt="kalender" />
         </div>
-      </div><div className="fixed bottom-4 right-4 flex flex-row w-24 h-12 bg-bill-orange rounded-full items-center p-4">
-        <img src="/share-icon.svg" alt="share" />
-        <p className="text-white">Del</p>
       </div>
+      <ShareButton text={`https://${process.env.NEXT_PUBLIC_VERCEL_URL ?? "localhost:3000"}`} />
     </main>
 
 
