@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
+import Link from "next/link";
 
 const logoVariants = cva("h-40 w-28", {
   variants: {
@@ -20,7 +21,8 @@ export interface LogoProps
 
 export function Logo({ variant, className, ...props }: LogoProps) {
   return (
-    <svg
+    <Link href="/">
+      <svg
       className={cn(logoVariants({ variant }), className)}
       width="131"
       height="100"
@@ -116,5 +118,7 @@ export function Logo({ variant, className, ...props }: LogoProps) {
         fill="currentColor"
       />
     </svg>
+
+    </Link>
   );
 }

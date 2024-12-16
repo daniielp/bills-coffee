@@ -66,49 +66,49 @@ export function QuizFlow({ data }: QuizFlowProps) {
         </main>
       );
     }
-
-    return (
-      <main className="flex flex-col gap-8 p-4">
-        <div className="flex items-center justify-center gap-2">
-          {steps.map((_, index) => (
-            <div className="flex justify-center items-center border-2 border-bill-orange h-20 w-20 rounded-full">
-              {index < currentStep && (
-                <Mascot
-                  key={"mascot" + index}
-                  variant="dark"
-                  className="h-16 w-16 text-bill-orange"
-                />
-              )}
-            </div>
-          ))}
-        </div>
-
-        <h2 className="text-2xl">Spørgsmål {currentStep + 1}</h2>
-        <p>{currentQuestion.text}</p>
-        <div className="flex flex-col gap-4">
-          {options &&
-            options.map((option, index) => (
-              <Button
-                variant={
-                  hasAnswered
-                    ? option.isCorrect
-                      ? "success"
-                      : "destructive"
-                    : "default"
-                }
-                onClick={() => setHasAnswered(true)}
-                key={index}
-              >
-                {option.text}
-              </Button>
-            ))}
-        </div>
-        <Button className={cn(hasAnswered ? "block" : "hidden")} asChild>
-          <Link href={`?step=${currentStep + 1}`}>
-            Spørgsmål {currentStep + 2} <ArrowRight />
-          </Link>
-        </Button>
-      </main>
-    );
   }
+
+  return (
+    <main className="flex flex-col gap-8 p-4">
+      <div className="flex items-center justify-center gap-2">
+        {steps.map((_, index) => (
+          <div key={"mascot" + index} className="flex justify-center items-center border-2 border-bill-orange h-20 w-20 rounded-full">
+            {index < currentStep && (
+              <Mascot
+                
+                variant="dark"
+                className="h-16 w-16 text-bill-orange"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl">Spørgsmål {currentStep + 1}</h2>
+      <p>{currentQuestion.text}</p>
+      <div className="flex flex-col gap-4">
+        {options &&
+          options.map((option, index) => (
+            <Button
+              variant={
+                hasAnswered
+                  ? option.isCorrect
+                    ? "success"
+                    : "destructive"
+                  : "default"
+              }
+              onClick={() => setHasAnswered(true)}
+              key={index}
+            >
+              {option.text}
+            </Button>
+          ))}
+      </div>
+      <Button className={cn(hasAnswered ? "block" : "hidden")} asChild>
+        <Link className="flex" href={`?step=${currentStep + 1}`}>
+          Spørgsmål {currentStep + 2} <ArrowRight />
+        </Link>
+      </Button>
+    </main>
+  );
 }
